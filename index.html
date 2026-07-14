@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  JUAL BELI VESPA CLASSIC — Tugas Besar E-Commerce
+  Pure HTML5 + CSS3 (Flexbox/Grid + Media Query) + Vanilla JS (ES6+)
+  Skema Warna: The Classic Heritage
+    - Primary  : #1E293B  (navy/slate gelap)
+    - Accent   : #D9A74A  (emas/CTA)
+    - Background: #FBF9F4 (cream halus)
+    - Surface  : #FFFFFF  (kartu/produk)
+  ============================================================================
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Platform jual beli Vespa Classic terpercaya untuk kolektor, enthusiast, dan investor." />
+  <meta name="theme-color" content="#1E293B" />
+  <title>Vespa Classic — Jual Beli Vespa Antik Terpercaya</title>
+
+  <!-- ====================================================================
+       GOOGLE ANALYTICS (DUMMY)
+       Ganti G-XXXXXXX dengan Measurement ID asli saat deploy.
+       Tag diletakkan di <head> agar pelacakan metrik bisnis berjalan
+       sejak halaman dimuat (best practice analytics).
+  ===================================================================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX'); // <- DUMMY Measurement ID
+  </script>
+
+  <!-- Stylesheet utama
+       Tipografi menggunakan font sistem: Georgia (serif/heading) &
+       Helvetica Neue/Arial (sans/body) — selaras dengan template dokumentasi. -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ====================================================================
+       NAVBAR
+  ===================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <!-- Logo / Brand -->
+      <a href="#hero" class="brand" aria-label="Beranda Vespa Classic">
+        <span class="brand-mark">V</span>
+        <span class="brand-text">Vespa<strong>Classic</strong></span>
+      </a>
+
+      <!-- Navigasi utama -->
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#katalog">Katalog</a>
+        <a href="#kategori">Kategori</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+
+      <!-- Aksi kanan: tombol keranjang + hamburger -->
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartToggle" aria-label="Buka keranjang belanja">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <!-- Badge jumlah item di keranjang -->
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       HERO BANNER
+  ===================================================================== -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Sejak 2025 • Koleksi Terkurasi</p>
+        <h1 class="hero-title">Jual Beli Vespa Classic Terpercaya</h1>
+        <p class="hero-subtitle">
+          Temukan unit Smallframe, Largeframe, Wideframe, hingga Special Series
+          untuk kolektor, enthusiast, dan investor kendaraan klasik.
+        </p>
+        <div class="hero-cta">
+          <a href="#katalog" class="btn btn-primary">Lihat Katalog</a>
+          <a href="#tentang" class="btn btn-ghost">Kenali Kami</a>
+        </div>
+        <!-- Statistik kepercayaan -->
+        <ul class="hero-stats">
+          <li><strong>500+</strong><span>Unit Terjual</span></li>
+          <li><strong>4.9★</strong><span>Rating Kolektor</span></li>
+          <li><strong>100%</strong><span>Garansi Keaslian</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-badge">Gold Standard</div>
+        <img
+          src="legend.webp"
+          alt="Vespa Classic klasik"
+          onerror="this.onerror=null;this.src='https://picsum.photos/seed/vespa-hero/900/700';"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       KATALOG PRODUK + KONTROL (SEARCH & FILTER)
+  ===================================================================== -->
+  <section class="section" id="katalog">
+    <div class="container">
+      <header class="section-head">
+        <p class="section-eyebrow">Koleksi Pilihan</p>
+        <h2 class="section-title">Katalog Vespa Classic</h2>
+        <p class="section-desc">Cari unit impian Anda berdasarkan nama atau filter kategori.</p>
+      </header>
+
+      <!-- Kontrol: pencarian + filter kategori -->
+      <div class="catalog-controls" id="kategori">
+        <!-- Search by name -->
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.3-4.3"></path>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Cari nama Vespa (mis. PX150)..."
+            aria-label="Cari produk"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Filter by category (di-render oleh JS) -->
+        <div class="filter-group" id="filterGroup" role="group" aria-label="Filter kategori"></div>
+      </div>
+
+      <!-- Grid produk (di-render oleh JS) -->
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+
+      <!-- Empty state saat tidak ada hasil -->
+      <p class="empty-state" id="emptyState" hidden>
+        Tidak ada unit yang cocok dengan pencarian Anda.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       TENTANG (Trust / Value Proposition)
+  ===================================================================== -->
+  <section class="section section-alt" id="tentang">
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">Mengapa Kami</p>
+        <h2 class="section-title">Standar Emas untuk Unit Klasik</h2>
+        <p>
+          Setiap unit melewati inspeksi menyeluruh oleh teknisi bersertifikat.
+          Kami hanya menyediakan Vespa dengan dokumen lengkap dan garansi
+          keaslian, sehingga aman untuk koleksi maupun investasi.
+        </p>
+        <ul class="about-list">
+          <li>✔ Inspeksi 50 poin sebelum listing</li>
+          <li>✔ Sertifikat keaslian & riwayat restorasi</li>
+          <li>✔ Escrow payment untuk keamanan transaksi</li>
+        </ul>
+      </div>
+      <div class="about-cards">
+        <div class="mini-card"><h3>Kurasi</h3><p>Unit terseleksi, bukan sekadar dagangan.</p></div>
+        <div class="mini-card"><h3>Transparan</h3><p>Status & kondisi unit terbuka.</p></div>
+        <div class="mini-card"><h3>Aman</h3><p>Pembayaran via gateway terpercaya.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       FOOTER
+  ===================================================================== -->
+  <footer class="footer" id="kontak">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#hero" class="brand">
+          <span class="brand-mark">V</span>
+          <span class="brand-text">Vespa<strong>Classic</strong></span>
+        </a>
+        <p>Marketplace jual beli Vespa Classic untuk kolektor & investor.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <a href="#katalog">Katalog</a>
+        <a href="#kategori">Kategori</a>
+        <a href="#tentang">Tentang</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kategori</h4>
+        <a href="#katalog" data-footer-cat="Smallframe">Smallframe</a>
+        <a href="#katalog" data-footer-cat="Largeframe">Largeframe</a>
+        <a href="#katalog" data-footer-cat="Wideframe">Wideframe</a>
+        <a href="#katalog" data-footer-cat="Special Series">Special Series</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <p>📍 Jl. cibarengkok</p>
+        <p>✉ hello@vespaclassic.id</p>
+        <p>☎ +62 21 5555 0123</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> VespaClassic.id — All rights reserved.</p>
+      <p>Dibangun dengan Pure HTML, CSS &amp; Vanilla JS.</p>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       MODAL DETAIL PRODUK
+  ===================================================================== -->
+  <div class="modal-overlay" id="productModal" hidden>
+    <div class="modal product-modal" role="dialog" aria-modal="true" aria-labelledby="pmName">
+      <button class="modal-close" data-close-modal aria-label="Tutup">&times;</button>
+      <div class="product-modal-body" id="productModalBody">
+        <!-- Diisi oleh JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       DRAWER KERANJANG BELANJA
+  ===================================================================== -->
+  <div class="drawer-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang belanja">
+    <div class="cart-header">
+      <h3>Keranjang Belanja</h3>
+      <button class="modal-close" id="cartClose" aria-label="Tutup keranjang">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Diisi oleh JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">Rp 0</strong>
+      </div>
+      <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>
+        Lanjut ke Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       MODAL CHECKOUT (Form Pembeli + Payment Gateway Dummy)
+  ===================================================================== -->
+  <div class="modal-overlay" id="checkoutModal" hidden>
+    <div class="modal checkout-modal" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+      <button class="modal-close" data-close-modal aria-label="Tutup">&times;</button>
+
+      <!-- STEP 1: Form & Pembayaran -->
+      <div id="checkoutFormWrap">
+        <h3 id="coTitle">Checkout</h3>
+        <p class="checkout-sub">Lengkapi data pembeli & pilih metode pembayaran.</p>
+
+        <form id="checkoutForm" novalidate>
+          <div class="form-row">
+            <label for="buyerName">Nama Lengkap *</label>
+            <input type="text" id="buyerName" name="buyerName" required placeholder="Budi Santoso" />
+          </div>
+          <div class="form-row">
+            <label for="buyerPhone">No. WhatsApp *</label>
+            <input type="tel" id="buyerPhone" name="buyerPhone" required placeholder="0812xxxxxx" />
+          </div>
+          <div class="form-row">
+            <label for="buyerAddress">Alamat Pengiriman *</label>
+            <textarea id="buyerAddress" name="buyerAddress" rows="2" required placeholder="Jl. ... , Kota, Provinsi"></textarea>
+          </div>
+
+          <!-- Simulasi Payment Gateway -->
+          <fieldset class="payment-group">
+            <legend>Metode Pembayaran</legend>
+            <label class="pay-option">
+              <input type="radio" name="payment" value="Transfer Bank" checked />
+              <span>
+                <strong>Transfer Bank</strong>
+                <small>BCA / Mandiri / BNI Virtual Account</small>
+              </span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="payment" value="E-Wallet" />
+              <span>
+                <strong>E-Wallet</strong>
+                <small>GoPay / OVO / DANA / ShopeePay</small>
+              </span>
+            </label>
+          </fieldset>
+
+          <div class="checkout-summary" id="checkoutSummary"></div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="payBtn">
+            Bayar Sekarang
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP 2: Loading simulasi -->
+      <div id="checkoutLoading" hidden class="checkout-loading">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Memproses pembayaran...</p>
+      </div>
+
+      <!-- STEP 3: Sukses -->
+      <div id="checkoutSuccess" hidden class="checkout-success">
+        <div class="success-icon">✓</div>
+        <h3>Pembayaran Berhasil!</h3>
+        <p id="successMsg">Terima kasih, pesanan Anda sedang kami proses.</p>
+        <button class="btn btn-primary" id="successClose">Selesai</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notifikasi -->
+  <div class="toast" id="toast" hidden></div>
+
+  <!-- Script utama -->
+  <script src="js/app.js"></script>
+</body>
+</html>
